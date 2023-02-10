@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import NotificationBox from "./components/NotificationBox.vue";
 const colorArr = ref([
   { id: 1, color: "red" },
   { id: 2, color: "green" },
@@ -10,7 +11,7 @@ const colorArr = ref([
 </script>
 
 <template>
-  <div>
+  <div v-if="false">
     <h1 class="text-center text-6xl font-extrabold text-violet-500">
       Vue 3 & Tailwind CSS - color shades exposition
     </h1>
@@ -52,9 +53,29 @@ const colorArr = ref([
           v-for="item in colorArr"
           :key="item.id"
           v-model="item.color"
-          :class="`bg-${item.color}-100 text-${item.color}-900 w-full rounded-md py-1 px-2 text-lg font-semibold`"
+          :class="`bg-${item.color}-100 text-${item.color}-900 w-full shadow-inner shadow-${item.color}-300/70 rounded-md py-1 px-2 text-lg font-semibold`"
         />
       </div>
     </div>
   </div>
+  <section>
+    <div>
+      <h3 class="text-3xl font-bold">Control panel:</h3>
+      <div class="flex flex-wrap gap-3">
+        <button
+          :class="`text-md rounded-md bg-[hsla(${
+            n * 10
+          },100%,75%,.5)] p-2 font-semibold shadow-md shadow-slate-200`"
+          v-for="n in 50"
+          :key="n"
+        >
+          Colorful button - {{ n }}
+        </button>
+      </div>
+    </div>
+    <NotificationBox
+      title="Войдите в свою учетную запись"
+      msg="You have to be logged in order to proceed."
+    />
+  </section>
 </template>
