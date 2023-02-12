@@ -6,11 +6,20 @@ const DEFAULT_MSG =
 </script>
 <template>
   <div
-    class="mt-5 inline-block rounded-l-md border-l-2 border-l-slate-800 bg-slate-100 p-2 dark:border-l-slate-200 dark:bg-slate-700"
+    class="mt-5 ml-5 inline-block max-w-xl rounded-md border-x-4 border-x-blue-400 bg-slate-100 p-2 text-justify"
   >
-    <h3 class="text-xl font-semibold dark:text-slate-200">
-      {{ title || DEFAULT_TITLE }}
+    <h3 class="text-xl font-semibold">
+      {{ title || DEFAULT_TITLE }} -
+      {{
+        new Date().toLocaleString("cs-CZ", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        })
+      }}
     </h3>
-    <div class="text-lg">{{ msg || DEFAULT_MSG }}</div>
+    <div class="indent-2 text-lg">{{ msg || DEFAULT_MSG }}</div>
   </div>
 </template>

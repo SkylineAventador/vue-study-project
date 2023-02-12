@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import NotificationBox from "./components/NotificationBox.vue";
+import CountdownTimer from "./components/CountdownTimer.vue";
 const colorArr = ref([
   { id: 1, color: "red" },
   { id: 2, color: "green" },
@@ -63,19 +64,16 @@ const colorArr = ref([
       <h3 class="text-3xl font-bold">Control panel:</h3>
       <div class="flex flex-wrap gap-3">
         <button
-          :class="`text-md rounded-md bg-[hsla(${
-            n * 10
-          },100%,75%,.5)] p-2 font-semibold shadow-md shadow-slate-200`"
+          :class="`text-md cursor-not-allowed rounded-md bg-[hsl(0,93%,23%)] p-2 font-semibold text-red-200 shadow-md shadow-slate-200`"
           v-for="n in 50"
           :key="n"
+          disabled
         >
-          Colorful button - {{ n }}
+          Записаться
         </button>
       </div>
     </div>
-    <NotificationBox
-      title="Войдите в свою учетную запись"
-      msg="You have to be logged in order to proceed."
-    />
+    <NotificationBox title="Войдите в свою учетную запись" />
+    <CountdownTimer target-date="2023-2-12 15:00:00" />
   </section>
 </template>
